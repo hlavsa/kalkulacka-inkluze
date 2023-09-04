@@ -1,28 +1,30 @@
+//const population = 10850000;
+
 const rates = {
-  visionDisability: 2.3,
-  mentalHealthImpairment: 18.9,
-  dexterityImpairment: 6.8,
-  anyDisability: 27.2,
-  hearingLoss: 3.6,
-  lowLiteracy: 14.6,
-  anxietyDisorder: 19.1,
-  learningImpairment: 8.0,
-  memoryImpairment: 10.4,
-  dyslexia: 8.0,
-  notFirstLanguage: 21.5,
-  colourVisionDeficiencyM: 8.0,
-  adhd0To19: 9.4,
-  adhd20Plus: 4.4,
-  bipolarDisorder: 4.3,
+  visionDisability: 1.46,
+  mentalHealthImpairment: 2,
+  dexterityImpairment: ,
+  anyDisability: ,
+  hearingLoss: 0.068,
+  lowLiteracy: 0.05,
+  anxietyDisorder: ,
+  learningImpairment: 3,
+  memoryImpairment: ,
+  dyslexia: 5.1,
+  notFirstLanguage: 14.0,
+  colourVisionDeficiencyM: ,
+  adhd0To19: ,
+  adhd20Plus: ,
+  bipolarDisorder: ,
   autism: 1.5,
-  colourVisionDeficiencyF: 0.5,
-  signLanguageUsers: 0.4,
+  colourVisionDeficiencyF: ,
+  signLanguageUsers: 0.068,
 };
 
 const names = {
   visionDisability: "Zrakové postižení",
-  mentalHealthImpairment: "Poškození duševního zdraví",
-  dexterityImpairment: "Porucha obratnosti",
+  mentalHealthImpairment: "Mentální postižení",
+  dexterityImpairment: "Tělesné postižení",
   anyDisability: "Jakékoli zdravotní postižení",
   hearingLoss: "Ztráta sluchu",
   lowLiteracy: "Nízká gramotnost",
@@ -34,20 +36,39 @@ const names = {
   colourVisionDeficiencyM: "Nedostatek barevného vidění (muž)",
   adhd0To19: "ADHD (věk 0-19)",
   adhd20Plus: "ADHD (věk 20+)",
-  bipolarDisorder: "Bipolání porucha",
   autism: "Autismus",
   colourVisionDeficiencyF: "Porucha barevného vidění (žena)",
-  signLanguageUsers: "Uživatelé České znakové řeči",
+  signLanguageUsers: "Mluvčí českého znakového jazyka",
 };
 
 const sources = {
-  visionDisability: "https://example.com/vision-stats",
-  //...
+  visionDisability:
+    "https://poslepu.cz/kolik-je-v-ceske-republice-zrakove-postizenych-lidi/",
+  mentalHealthImpairment: "htt",
+  dexterityImpairment: "htt",
+  anyDisability: "htt",
+  hearingLoss:
+    "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
+  lowLiteracy: "htt",
+  anxietyDisorder: "htt",
+  learningImpairment: "Bez zdroje",
+  memoryImpairment: "htt",
+  dyslexia:
+    "https://karolinum.cz/data/clanek/2247/PPP_3_4_2015%20kejrova%2075-87.pdf",
+  notFirstLanguage: "https://www.scitani.cz/matersky-jazyk",
+  colourVisionDeficiencyM: "htt",
+  adhd0To19: "htt",
+  adhd20Plus: "htt",
+  autism: "https://www.nautis.cz/autismus",
+  colourVisionDeficiencyF: "htt",
+  signLanguageUsers:
+    "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
 };
 
 // DOM elements
 const form = document.getElementById("calculator");
 const results = document.getElementById("results");
+const population = parseInt(form.population.value);
 
 // Handle form submit
 form.addEventListener("submit", (e) => {
@@ -56,10 +77,23 @@ form.addEventListener("submit", (e) => {
   // Get input value
   const population = parseInt(form.population.value);
 
+  // Create searched number message
+  let message = `
+    Výsledky pro ${population} osob.
+
+    Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.
+  `;
+  // Output message
+  results.innerHTML = `
+    <div class="text-m text-gray-900">
+      ${message}  
+    </div>
+  `;
+
   // Output string
   // Create results output
   let output = `
-  <h2 class="mt-4 text-lg">Zdravotní postižení, postižení a stavy</h2>
+  <h2 class="mt-4 text-2xl font-bold border-t-2 pt-4 pb-8">Zdravotní postižení, poruchy a stavy</h2>
   <table class="border-collapse table-auto w-full text-sm text-left text-gray-500 ">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
       <tr>
@@ -94,6 +128,6 @@ form.addEventListener("submit", (e) => {
   // Close table
   output += `</table>`;
 
-  // Update results div
-  results.innerHTML = output;
+  // Display message above table 
+  results.innerHTML += output;
 });
