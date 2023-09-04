@@ -77,9 +77,9 @@ form.addEventListener("submit", (e) => {
 
   // Create searched number message
   let message = `
-    <p class="text-gray-900 text-m py-8">Výsledky pro <strong>${population}</strong> osob.</p>
+    <p class="text-gray-900 text-m py-8">Výsledky pro <strong>${population}</strong> lidí.</p>
 
-    <p class="text-gray-900 text-m pb-8">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
+    <p class="text-gray-900 text-m pb-4">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
   `;
   // Output message
   results.innerHTML = `
