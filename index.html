@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}</style>
+</head>
+<body class="antialised">
+  <header class="bg-white mx-auto max-w-4xl pb-12">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div class="col-span-2">
+        <h1 class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+        Kalkulačka inkluze</h1>
+      </div>
+
+      <p class="text-gray-900">Odhadněte, kolik lidí může mít zdravotní postižení, poruchu nebo jiné charakteristiky, které mohou ovlivnit způsob, jakým využívají vaše služby.</p>
+    </div>
+  </header>
+  
+  <div class="mx-auto max-w-4xl p-4 bg-gray-50 border border-gray-50 rounded-lg">
+    <div class="">
+      <form id="calculator">
+        <label for="population"  class="block mb-2 text-3xl font-medium text-gray-900">Kolik lidí může vaši službu využívat</label>
+        <input id="population" type="number" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-45 p-2.5 mb-6">
+    
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Vypočítat</button>
+      </form>
+    </div>
+    
+    <div id="results" class="mt-4 text-lg"></div>
+  
+  
+  </div>
+
+  <footer class="bg-gray-100 text-gray-600 text-center p-2 fixed bottom-0 left-0 right-0">
+    vytvořil hlavsa.
+  </footer>
+  
+  <script src="index.js"></script>
+</body>
+</html>
