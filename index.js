@@ -15,7 +15,6 @@ const rates = {
   colourVisionDeficiencyM: ,
   adhd0To19: ,
   adhd20Plus: ,
-  bipolarDisorder: ,
   autism: 1.5,
   colourVisionDeficiencyF: ,
   signLanguageUsers: 0.068,
@@ -68,7 +67,6 @@ const sources = {
 // DOM elements
 const form = document.getElementById("calculator");
 const results = document.getElementById("results");
-const population = parseInt(form.population.value);
 
 // Handle form submit
 form.addEventListener("submit", (e) => {
@@ -79,9 +77,9 @@ form.addEventListener("submit", (e) => {
 
   // Create searched number message
   let message = `
-    Výsledky pro ${population} osob.
+    <p class="text-gray-900 text-m">Výsledky pro <strong>${population}</strong> osob.</p><br>
 
-    Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.
+    <p class="text-gray-900 text-m">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
   `;
   // Output message
   results.innerHTML = `
