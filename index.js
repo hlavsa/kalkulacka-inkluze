@@ -3,20 +3,20 @@
 const rates = {
   visionDisability: 1.46,
   mentalHealthImpairment: 2,
-  dexterityImpairment: ,
-  anyDisability: ,
+  dexterityImpairment: "",
+  anyDisability: "",
   hearingLoss: 0.068,
   lowLiteracy: 0.05,
-  anxietyDisorder: ,
+  anxietyDisorder: "",
   learningImpairment: 3,
-  memoryImpairment: ,
+  memoryImpairment: "",
   dyslexia: 5.1,
   notFirstLanguage: 14.0,
-  colourVisionDeficiencyM: ,
-  adhd0To19: ,
-  adhd20Plus: ,
+  colourVisionDeficiencyM: "",
+  adhd0To19: "",
+  adhd20Plus: "",
   autism: 1.5,
-  colourVisionDeficiencyF: ,
+  colourVisionDeficiencyF: "",
   signLanguageUsers: 0.068,
 };
 
@@ -77,9 +77,9 @@ form.addEventListener("submit", (e) => {
 
   // Create searched number message
   let message = `
-    <p class="text-gray-900 text-m">Výsledky pro <strong>${population}</strong> osob.</p><br>
+    <p class="text-gray-900 text-m py-8">Výsledky pro <strong>${population}</strong> osob.</p>
 
-    <p class="text-gray-900 text-m">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
+    <p class="text-gray-900 text-m pb-8">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
   `;
   // Output message
   results.innerHTML = `
@@ -91,7 +91,7 @@ form.addEventListener("submit", (e) => {
   // Output string
   // Create results output
   let output = `
-  <h2 class="mt-4 text-2xl font-bold border-t-2 pt-4 pb-8">Zdravotní postižení, poruchy a stavy</h2>
+  <h2 class="mt-4 text-2xl font-bold border-t-2 pt-8 pb-8">Zdravotní postižení, poruchy a stavy</h2>
   <table class="border-collapse table-auto w-full text-sm text-left text-gray-500 ">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
       <tr>
@@ -126,6 +126,6 @@ form.addEventListener("submit", (e) => {
   // Close table
   output += `</table>`;
 
-  // Display message above table 
+  // Display message above table
   results.innerHTML += output;
 });
