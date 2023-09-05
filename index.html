@@ -33,11 +33,11 @@
   </style>
 </head>
 <body class="antialised">
-  <div class="bg-gray-50 text-gray-900 text-center p-2 fixed top-0 left-0 right-0">
+  <div class="bg-gray-50 text-gray-900 text-center p-2 top-0 left-0 right-0">
     vytvořil <a href="https://github.com/hlavsa/kalkulacka-inkluze"
       class="font-medium text-grey-900  hover:underline">hlavsa</a>.
   </div>
-  <header class="bg-white mx-auto max-w-4xl lg:py-16 sm:py-8 p-4">
+  <header class="bg-white mx-auto max-w-4xl py-8 md:py-16  p-8">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 items-center">
       <div class="col-span-2">
         <h1 class="text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
@@ -48,7 +48,7 @@
     </div>
   </header>
   
-  <main class="mx-auto max-w-4xl p-8 lg:mt-12 sm:mt-4 bg-gray-50 border border-gray-50 rounded-lg">
+  <main class="mx-auto max-w-4xl p-8 mt-4 lg:mt-12 bg-gray-50 border border-gray-50 rounded-lg">
     <div class="">
       <form id="calculator" action="#">
         <label for="population"  class="block mb-4 text-3xl font-medium text-gray-900">Kolik lidí by mohlo vaši službu využívat</label>
@@ -58,7 +58,7 @@
       </form>
     </div>
     
-    <div id="results" class="mt-4 text-lg lg:mb-12 sm:mb-4"></div>
+    <div id="results" class="mt-4 text-lg mb-4 lg:mb-12"></div>
   
   
   </main>
@@ -78,11 +78,9 @@
         memoryImpairment: "",
         dyslexia: 5.1,
         notFirstLanguage: 14.0,
-        colourVisionDeficiencyM: "",
         adhd0To19: "",
         adhd20Plus: "",
         autism: 1.5,
-        colourVisionDeficiencyF: "",
         signLanguageUsers: 0.068,
       };
 
@@ -98,11 +96,9 @@
         memoryImpairment: "Porucha paměti",
         dyslexia: "Dyslexie",
         notFirstLanguage: "Čeština není prvním jazykem",
-        colourVisionDeficiencyM: "Nedostatek barevného vidění (muž)",
         adhd0To19: "ADHD (věk 0-19)",
         adhd20Plus: "ADHD (věk 20+)",
         autism: "Autismus",
-        colourVisionDeficiencyF: "Porucha barevného vidění (žena)",
         signLanguageUsers: "Mluvčí českého znakového jazyka",
       };
 
@@ -121,11 +117,9 @@
         dyslexia:
           "https://karolinum.cz/data/clanek/2247/PPP_3_4_2015%20kejrova%2075-87.pdf",
         notFirstLanguage: "https://www.scitani.cz/matersky-jazyk",
-        colourVisionDeficiencyM: "htt",
         adhd0To19: "htt",
         adhd20Plus: "htt",
         autism: "https://www.nautis.cz/autismus",
-        colourVisionDeficiencyF: "htt",
         signLanguageUsers:
           "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
       };
@@ -133,14 +127,6 @@
       // DOM elements
       const form = document.getElementById("calculator");
       const results = document.getElementById("results");
-      // Create media query as string
-      const mediaQuery = `
-        @media (min-width: 640px) {
-          table {
-            display: inline-table !important; 
-          }
-        }
-      `;
 
       // Handle form submit
       form.addEventListener("submit", (e) => {
@@ -165,12 +151,9 @@
         // Output string
         // Create results output
         let output = `
-          <style>
-            ${mediaQuery}
-          </style>
           <h2 class="mt-4 text-2xl font-bold border-t-2 pt-8 pb-8">Zdravotní postižení, poruchy a stavy</h2>
-          <table class="border-collapse table-auto w-full flex flex-row flex-no-wrap text-sm text-left text-gray-500 ">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <div class="relative"><table class="border-collapse table-auto w-full sm:inline-table md:flex md:flex-row flex-no-wrap text-sm text-left text-gray-500 ">
+            <thead class="text-xs text-gray-700 uppercase sticky top-0 z-10 px-6 md:top-auto md:px-0">
               <tr class="flex flex-col flex-no wrap sm:table-row">
                 <th scope="col" class="px-6 py-3">Opatření</th>
                 <th scope="col" class="px-6 py-3">Odhadovaný počet</th>
@@ -186,11 +169,11 @@
           // Add table row for each disability
           output += `
             <tbody class="flex-1 sm:flex-none">
-              <tr class="bg-white border-b flex flex-col flex-no wrap sm:table-row">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">${names[disability]
+              <tr class="bg-white border-b flex flex-col flex-no wrap sm:table-row ">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right md:text-left">${names[disability]
                     }</th>  
-                <td class=" px-6 py-4 text-gray-900">${Math.round(count)}</td>
-                <td class=" px-6 py-4"><a class="font-medium text-blue-600  hover:underline" href="${sources[disability]
+                <td class=" px-6 py-2 md:py-4 text-gray-900 text-right md:text-left">${Math.round(count)}</td>
+                <td class=" px-6 py-4 text-right md:text-left"><a class="font-medium text-blue-600 hover:underline" href="${sources[disability]
                     }">Přejít na zdroj</a></td>
 
                 </tr>
@@ -199,7 +182,7 @@
         }
 
         // Close table
-        output += `</table>`;
+        output += `</table></div>`;
 
         // Display message above table
         results.innerHTML += output;
