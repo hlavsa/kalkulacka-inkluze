@@ -21,10 +21,19 @@
     input[type=number] {
       -moz-appearance: textfield;
     }
-</style>
+    @media (min-width: 640px) {
+      table {
+        display: inline-table !important;
+      }
+
+      thead tr:not(:first-child) {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body class="antialised">
-  <header class="bg-white mx-auto max-w-4xl py-16">
+  <header class="bg-white mx-auto max-w-4xl py-16 sm:py-8 p-4">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 items-center">
       <div class="col-span-2">
         <h1 class="text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
@@ -35,7 +44,7 @@
     </div>
   </header>
   
-  <div class="mx-auto max-w-4xl p-8 mt-12 bg-gray-50 border border-gray-50 rounded-lg">
+  <div class="mx-auto max-w-4xl p-8 mt-12 sm:mt-4 bg-gray-50 border border-gray-50 rounded-lg">
     <div class="">
       <form id="calculator" action="#">
         <label for="population"  class="block mb-4 text-3xl font-medium text-gray-900">Kolik lidí může vaši službu využívat</label>
@@ -45,7 +54,7 @@
       </form>
     </div>
     
-    <div id="results" class="mt-4 text-lg mb-12"></div>
+    <div id="results" class="mt-4 text-lg mb-12 sm:mb-4"></div>
   
   
   </div>
@@ -124,6 +133,14 @@
       // DOM elements
       const form = document.getElementById("calculator");
       const results = document.getElementById("results");
+      // Create media query as string
+      const mediaQuery = `
+        @media (min-width: 640px) {
+          table {
+            display: inline-table !important; 
+          }
+        }
+      `;
 
       // Handle form submit
       form.addEventListener("submit", (e) => {
@@ -134,30 +151,33 @@
 
         // Create searched number message
         let message = `
-    <p class="text-gray-900 text-m py-8">Výsledky pro <strong>${population}</strong> lidí.</p>
+          <p class="text-gray-900 text-m py-8">Výsledky pro <strong>${population}</strong> lidí.</p>
 
-    <p class="text-gray-900 text-m pb-4">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
-  `;
+          <p class="text-gray-900 text-m pb-4">Tyto výsledky využívají údaje z několika zdrojů a lidé mohou spadat do jednoho nebo více kritérií, proto se čísla nebudou sčítat do ${population}.</p>
+        `;
         // Output message
         results.innerHTML = `
-    <div class="text-m text-gray-900">
-      ${message}  
-    </div>
-  `;
+          <div class="text-m text-gray-900">
+            ${message}  
+          </div>
+        `;
 
         // Output string
         // Create results output
         let output = `
-  <h2 class="mt-4 text-2xl font-bold border-t-2 pt-8 pb-8">Zdravotní postižení, poruchy a stavy</h2>
-  <table class="border-collapse table-auto w-full text-sm text-left text-gray-500 ">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-      <tr>
-        <th scope="col" class="px-6 py-3">Opatření</th>
-        <th scope="col" class="px-6 py-3">Odhadovaný počet</th>
-        <th scope="col" class="px-6 py-3">Zdroj</th>
-      </tr>
-    </thead>
-`;
+          <style>
+            ${mediaQuery}
+          </style>
+          <h2 class="mt-4 text-2xl font-bold border-t-2 pt-8 pb-8">Zdravotní postižení, poruchy a stavy</h2>
+          <table class="border-collapse table-auto w-full flex flex-row flex-no-wrap text-sm text-left text-gray-500 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr class="flex flex-col flex-no wrap sm:table-row">
+                <th scope="col" class="px-6 py-3">Opatření</th>
+                <th scope="col" class="px-6 py-3">Odhadovaný počet</th>
+                <th scope="col" class="px-6 py-3">Zdroj</th>
+              </tr>
+            </thead>
+        `;
 
         // Calculate estimates
         for (let disability in rates) {
@@ -165,17 +185,17 @@
 
           // Add table row for each disability
           output += `
-    <tbody>
-      <tr class="bg-white border-b">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">${names[disability]
-            }</th>  
-        <td class=" px-6 py-4">${Math.round(count)}</td>
-        <td class=" px-6 py-4"><a class="font-medium text-blue-600  hover:underline" href="${sources[disability]
-            }">Přejít na zdroj</a></td>
+            <tbody class="flex-1 sm:flex-none">
+              <tr class="bg-white border-b flex flex-col flex-no wrap sm:table-row">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">${names[disability]
+                    }</th>  
+                <td class=" px-6 py-4 text-gray-900">${Math.round(count)}</td>
+                <td class=" px-6 py-4"><a class="font-medium text-blue-600  hover:underline" href="${sources[disability]
+                    }">Přejít na zdroj</a></td>
 
-        </tr>
-      </tbody>
-    `;
+                </tr>
+              </tbody>
+            `;
         }
 
         // Close table
