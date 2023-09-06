@@ -1,70 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Kalkulačka inkluze</title>
-  <meta name="description"
-    content="Odhadněte, kolik lidí může mít zdravotní postižení, poruchu nebo jiné charakteristiky, které mohou ovlivnit způsob, jakým využívají vaše služby.">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kalkulačka inkluze</title>
+    <meta
+      name="description"
+      content="Odhadněte, kolik lidí může mít zdravotní postižení, poruchu nebo jiné charakteristiky, které mohou ovlivnit způsob, jakým využívají vaše služby."
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-    @media (min-width: 640px) {
-      table {
-        display: inline-table !important;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
       }
 
-      thead tr:not(:first-child) {
-        display: none;
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
       }
-    }
-  </style>
-</head>
-<body class="antialised">
-  <div class="bg-gray-50 text-gray-900 text-center p-2 top-0 left-0 right-0">
-    vytvořil <a href="https://github.com/hlavsa/"
-      class="font-medium text-grey-900 hover:underline">hlavsa</a>.
-  </div>
-  <header class="bg-white mx-auto max-w-4xl py-8 md:py-16  p-8">
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 items-center">
-      <div class="col-span-2">
-        <h1 class="text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-        Kalkulačka inkluze</h1>
+      @media (min-width: 640px) {
+        table {
+          display: inline-table !important;
+        }
+
+        thead tr:not(:first-child) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialised">
+    <div class="bg-gray-50 text-gray-900 text-center p-2 top-0 left-0 right-0">
+      vytvořil
+      <a
+        href="https://github.com/hlavsa/"
+        class="font-medium text-grey-900 hover:underline"
+        >hlavsa</a
+      >.
+    </div>
+    <header class="bg-white mx-auto max-w-4xl py-8 md:py-16 p-8">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 items-center">
+        <div class="col-span-2">
+          <h1
+            class="text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
+          >
+            Kalkulačka inkluze
+          </h1>
+        </div>
+
+        <p class="text-gray-900 font-bold">
+          Odhadněte, kolik lidí může mít zdravotní postižení, poruchu nebo jiné
+          charakteristiky, které mohou ovlivnit způsob, jakým využívají vaše
+          služby.
+        </p>
+      </div>
+    </header>
+
+    <main
+      class="mx-auto max-w-4xl p-8 mt-4 md:mt-12 bg-gray-50 border border-gray-50 rounded-lg"
+    >
+      <div class="">
+        <form id="calculator" action="#">
+          <label
+            for="population"
+            class="block mb-4 text-3xl font-medium text-gray-900"
+            >Kolik lidí by mohlo vaši službu využívat</label
+          >
+          <input
+            id="population"
+            onwheel="return false;"
+            oninput="formatInput()"
+            type="text"
+            pattern="[\d ]*"
+            class="bg-white border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-45 p-2.5 mb-6"
+          />
+
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            Vypočítat
+          </button>
+        </form>
       </div>
 
-      <p class="text-gray-900 font-bold">Odhadněte, kolik lidí může mít zdravotní postižení, poruchu nebo jiné charakteristiky, které mohou ovlivnit způsob, jakým využívají vaše služby.</p>
-    </div>
-  </header>
-  
-  <main class="mx-auto max-w-4xl p-8 mt-4 md:mt-12 bg-gray-50 border border-gray-50 rounded-lg">
-    <div class="">
-      <form id="calculator" action="#">
-        <label for="population"  class="block mb-4 text-3xl font-medium text-gray-900">Kolik lidí by mohlo vaši službu využívat</label>
-        <input id="population" type="number" class="bg-white border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-45 p-2.5 mb-6">
-    
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Vypočítat</button>
-      </form>
-    </div>
-    
-    <div id="results"></div>
-  
-  
-  </main>
+      <div id="results"></div>
+    </main>
 
-  <script type="text/javascript">
-    //const population = 10850000;
+    <script type="text/javascript">
+      // Input formatting function
+      function formatInput() {
+        const rawValue = input.value.replace(/[^0-9]/g, "");
+
+        const formatted = Number(rawValue)
+          .toLocaleString("en-US")
+          .replace(",", " ");
+
+        input.value = formatted;
+      }
+    </script>
+
+    <script type="text/javascript">
+      //const population = 10850000;
 
       const rates = {
         visionDisability: 1.46,
@@ -88,13 +133,13 @@
         hearingLoss: "Sluchové postižení",
         mentalHealthImpairment: "Mentální postižení",
         dexterityImpairment: "Vady pohybového ústrojí",
-        anyDisability: "Jakékoli zdravotní postižení",  
+        anyDisability: "Jakékoli zdravotní postižení",
         anxietyDisorder: "Duševní nemoci",
         learningImpairment: "Porucha učení",
         memoryImpairment: "Porucha paměti",
         dyslexia: "Dyslexie",
         adhd18Plus: "ADHD (věk 18+)",
-        autism: "Autismus",              
+        autism: "Autismus",
         lowLiteracy: "Nízká gramotnost",
         notFirstLanguage: "Čeština není prvním jazykem",
         signLanguageUsers: "Mluvčí českého znakového jazyka",
@@ -105,12 +150,17 @@
           "https://poslepu.cz/kolik-je-v-ceske-republice-zrakove-postizenych-lidi/",
         hearingLoss:
           "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
-        mentalHealthImpairment: "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
+        mentalHealthImpairment:
+          "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
         dexterityImpairment: "",
-        anyDisability: "https://www.opojisteni.cz/spektrum/csu-13-procent-obyvatel-ceska-nad-15-let-ma-zdravotni-postizeni/c:16801/",
-        anxietyDisorder: "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
-        learningImpairment: "https://www.csicr.cz/Csicr/media/Prilohy/Obr%C3%A1zky%20ke%20%C4%8Dl%C3%A1nk%C5%AFm/2018/Vyrocni-zprava-CSI-2017-2018_final-verze.pdf",
-        memoryImpairment: "https://www.kntb.cz/pocet-pacientu-s-alzheimerovou-nemoci-stale-narusta",
+        anyDisability:
+          "https://www.opojisteni.cz/spektrum/csu-13-procent-obyvatel-ceska-nad-15-let-ma-zdravotni-postizeni/c:16801/",
+        anxietyDisorder:
+          "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
+        learningImpairment:
+          "https://www.csicr.cz/Csicr/media/Prilohy/Obr%C3%A1zky%20ke%20%C4%8Dl%C3%A1nk%C5%AFm/2018/Vyrocni-zprava-CSI-2017-2018_final-verze.pdf",
+        memoryImpairment:
+          "https://www.kntb.cz/pocet-pacientu-s-alzheimerovou-nemoci-stale-narusta",
         dyslexia:
           "https://karolinum.cz/data/clanek/2247/PPP_3_4_2015%20kejrova%2075-87.pdf",
         adhd18Plus: "htt",
@@ -124,19 +174,24 @@
       // DOM elements
       const form = document.getElementById("calculator");
       const results = document.getElementById("results");
+      // Get input element
+      const input = document.getElementById("population");
 
       // After generating results/does not take up space when empty
-      if (results.innerHTML.trim() !== '') {
+      if (results.innerHTML.trim() !== "") {
         // Add classes
-        results.classList.add('mt-4', 'text-lg', 'mb-4', 'md:mb-12');
+        results.classList.add("mt-4", "text-lg", "mb-4", "md:mb-12");
       }
 
       // Handle form submit
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Get input value
-        const population = parseInt(form.population.value);
+        // Get raw input value and remove formatting
+        const rawValue = input.value.replace(/\D/g, "");
+
+        // Parse input as number
+        const population = parseInt(rawValue);
 
         // Create searched number message
         let message = `
@@ -174,11 +229,15 @@
           output += `
             <tbody class="flex-1 sm:flex-none">
               <tr class="bg-white border-b flex flex-col flex-no wrap sm:table-row ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right md:text-left">${names[disability]
-                    }</th>  
-                <td class=" px-6 py-2 md:py-4 text-gray-900 text-right md:text-left">${Math.round(count)}</td>
-                <td class=" px-6 py-4 text-right md:text-left"><a class="font-medium text-blue-600 hover:underline" href="${sources[disability]
-                    }">Přejít na zdroj</a></td>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right md:text-left">${
+                  names[disability]
+                }</th>  
+                <td class=" px-6 py-2 md:py-4 text-gray-900 text-right md:text-left">${Math.round(
+                  count
+                )}</td>
+                <td class=" px-6 py-4 text-right md:text-left"><a class="font-medium text-blue-600 hover:underline" href="${
+                  sources[disability]
+                }">Přejít na zdroj</a></td>
 
                 </tr>
               </tbody>
@@ -191,8 +250,6 @@
         // Display message above table
         results.innerHTML += output;
       });
-
-  </script>
-  
-</body>
+    </script>
+  </body>
 </html>
