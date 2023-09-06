@@ -68,17 +68,16 @@
 
       const rates = {
         visionDisability: 1.46,
-        mentalHealthImpairment: 2,
+        mentalHealthImpairment: 2.86,
         dexterityImpairment: "",
-        anyDisability: "",
+        anyDisability: 10.62,
         hearingLoss: 0.068,
         lowLiteracy: 0.05,
-        anxietyDisorder: "",
-        learningImpairment: 3,
-        memoryImpairment: "",
+        anxietyDisorder: 0.96,
+        learningImpairment: 0.31,
+        memoryImpairment: 0.92,
         dyslexia: 5.1,
-        adhd0To19: "",
-        adhd20Plus: "",
+        adhd18Plus: 0.18,
         autism: 1.5,
         notFirstLanguage: 14.0,
         signLanguageUsers: 0.068,
@@ -86,18 +85,17 @@
 
       const names = {
         visionDisability: "Zrakové postižení",
+        hearingLoss: "Sluchové postižení",
         mentalHealthImpairment: "Mentální postižení",
-        dexterityImpairment: "Tělesné postižení",
-        anyDisability: "Jakékoli zdravotní postižení",
-        hearingLoss: "Ztráta sluchu",
-        lowLiteracy: "Nízká gramotnost",
-        anxietyDisorder: "Úzkostná porucha",
+        dexterityImpairment: "Vady pohybového ústrojí",
+        anyDisability: "Jakékoli zdravotní postižení",  
+        anxietyDisorder: "Duševní nemoci",
         learningImpairment: "Porucha učení",
         memoryImpairment: "Porucha paměti",
         dyslexia: "Dyslexie",
-        adhd0To19: "ADHD (věk 0-19)",
-        adhd20Plus: "ADHD (věk 20+)",
-        autism: "Autismus",
+        adhd18Plus: "ADHD (věk 18+)",
+        autism: "Autismus",              
+        lowLiteracy: "Nízká gramotnost",
         notFirstLanguage: "Čeština není prvním jazykem",
         signLanguageUsers: "Mluvčí českého znakového jazyka",
       };
@@ -105,23 +103,22 @@
       const sources = {
         visionDisability:
           "https://poslepu.cz/kolik-je-v-ceske-republice-zrakove-postizenych-lidi/",
-        mentalHealthImpairment: "htt",
-        dexterityImpairment: "htt",
-        anyDisability: "htt",
         hearingLoss:
           "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
-        lowLiteracy: "htt",
-        anxietyDisorder: "htt",
-        learningImpairment: "Bez zdroje",
-        memoryImpairment: "htt",
+        mentalHealthImpairment: "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
+        dexterityImpairment: "",
+        anyDisability: "https://www.opojisteni.cz/spektrum/csu-13-procent-obyvatel-ceska-nad-15-let-ma-zdravotni-postizeni/c:16801/",
+        anxietyDisorder: "https://www.vlada.cz/cz/pracovni-a-poradni-organy-vlady/vvzpo/dokumenty/priloha-c--2-6691/#",
+        learningImpairment: "https://www.csicr.cz/Csicr/media/Prilohy/Obr%C3%A1zky%20ke%20%C4%8Dl%C3%A1nk%C5%AFm/2018/Vyrocni-zprava-CSI-2017-2018_final-verze.pdf",
+        memoryImpairment: "https://www.kntb.cz/pocet-pacientu-s-alzheimerovou-nemoci-stale-narusta",
         dyslexia:
           "https://karolinum.cz/data/clanek/2247/PPP_3_4_2015%20kejrova%2075-87.pdf",
-        adhd0To19: "htt",
-        adhd20Plus: "htt",
+        adhd18Plus: "htt",
         autism: "https://www.nautis.cz/autismus",
+        lowLiteracy: "Bez zdroje",
         notFirstLanguage: "https://www.scitani.cz/matersky-jazyk",
         signLanguageUsers:
-          "https://www.cun.cz/cs/blog/2017/05/17/statistiky-poctu-osob-se-sluchovym-postizenim/",
+          "https://ujkn.ff.cuni.cz/wp-content/uploads/sites/64/2020/08/Situace-%C4%8Desk%C3%A9ho-znakov%C3%A9ho-jazyka.pdf",
       };
 
       // DOM elements
